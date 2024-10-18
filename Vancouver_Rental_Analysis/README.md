@@ -25,4 +25,32 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 4. Renting a larger home is more challenging, as increased size is associated with higher rent.
 5. Zones farther from downtown tend to have lower rental prices.
 
+## Data Analysis
+
+### <ins> Analysis 1 </ins>
+This analysis focuses on determining whether high rental prices in Vancouver are a recent occurrence or if they have been high over the past 15 years. By examining the annual rent change and percentage growth from 2009 to the present, we can identify significant increases in rent.
+
+#### **SQL Query:**
+```sql
+-- Determine the rent increase and percentage increase over the years
+SELECT 
+    Year,
+    Total_Avg_Rent AS Avg_Rent,
+    Total_Avg_Rent - LAG(Total_Avg_Rent) OVER (ORDER BY Year) AS Annual_Rent_Change,  -- Calculate rent increase
+    FORMAT((Total_Avg_Rent - LAG(Total_Avg_Rent) OVER (ORDER BY Year)) / LAG(Total_Avg_Rent) OVER (ORDER BY Year) * 100, 2) AS Annual_Rent_Growth_Percentage  -- Calculate percentage increase
+FROM 
+    his_ave_rent
+WHERE Year > 2008
+ORDER BY Year;
+```
+
+#### **Output:**
+![Result_1](https://github.com/user-attachments/assets/9a306486-4aeb-4080-9b01-a00d0e6833f4)
+
+### Interpretation
+- Vancouver's rental prices have fluctuated over the past 15 years, with periods of both increases and decreases.
+- After a sharp decline during COVID-19, rent growth surged from **1.78%** to **8.34%** as lockdowns lifted.
+- In 2023, rental prices reached a peak growth rate of **9.13%**.
+- This sharp post-pandemic recovery indicates that the high rents currently experienced in Vancouver are part of a recent trend driven by increased housing demand.
+
 
