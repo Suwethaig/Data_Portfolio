@@ -119,4 +119,106 @@ FROM temp_rent_income;
   - They could never afford a **2-bedroom** rental, as these costs consume **80%** of their monthly earnings.
   - They could never afford a **3-plus-bedroom** rental, as these costs consume **90%** of their monthly earnings.
 
+### <ins> Analysis 3 </ins>
+This analysis examines whether a greater number of rental units in a zone correlates with lower average rent prices. To conduct this, I have classified zones into low, medium, and high rent categories based on their average rent.
 
+#### **SQL Query 3.1:**
+```sql
+SELECT MIN(Total_Avg_Rent) AS Min_Rent, MAX(Total_Avg_Rent) AS Max_Rent, 
+MAX(Total_Avg_Rent) - MIN(Total_Avg_Rent) AS Rent_Range
+FROM zone_avg_rent;
+```
+
+#### **Output 3.2:**
+![Result 3 1](https://github.com/user-attachments/assets/e1a2b711-a34f-4d7b-81c7-61985d16e5ce)
+
+Based on these findings, I have classified the zones as follows:
+- Low: Rent less than $1650
+- Medium: Rent between $1650 and $2000
+- High: Rent greater than $2000
+
+#### **SQL Query 3.2:**
+```sql
+-- Creating a temporary table to classify zones into rent levels
+DROP TABLE IF EXISTS temp_zone_classifier;
+CREATE TEMPORARY TABLE temp_zone_classifier AS(
+    SELECT zar.Zone, zar.Total_Avg_Rent,
+        CASE
+            WHEN zar.Total_Avg_Rent < 1650 THEN 'Low'  -- Classify as 'Low' rent
+            WHEN zar.Total_Avg_Rent BETWEEN 1650 AND 2000 THEN 'Medium'  -- Classify as 'Medium' rent
+            WHEN zar.Total_Avg_Rent > 2000 THEN 'High'  -- Classify as 'High' rent
+        END AS Rent_Level, 
+        zu.Total_Units  -- Total units for each zone
+    FROM 
+        zone_avg_rent zar
+    JOIN 
+        zone_units zu ON zar.Zone = zu.zone  -- Join on zone
+);
+
+-- Retrieving the table to check its contents
+SELECT *
+FROM temp_zone_classifier;
+```
+
+#### **Output 3.2:**
+The output table is not included here due to its length, but the CSV file is available in the Outputs folder.
+
+Next, I have analyzed the average number of units across the different rent classifications.
+
+#### **SQL Query 3.3:**
+```sql
+-- Select rent levels with their count and average total units
+SELECT 
+    Rent_Level, 
+    COUNT(Rent_Level) AS Level_Count,  -- Count of zones in each rent level
+    FORMAT(AVG(Total_Units), 2) AS Avg_Units  -- Average total units in each rent level
+FROM 
+    temp_zone_classifier
+GROUP BY 
+    Rent_Level;  -- Group by rent level to aggregate results
+```
+
+#### **Output 3.3:**
+![Result 3 3](https://github.com/user-attachments/assets/9a3e588c-5ad2-4f29-8639-63e978a0891b)
+
+
+#### *Investigating Medium Rent Zones*
+Noticing some anomalies in the medium rent category, I have investigated further for potential outliers.
+
+#### **SQL Query 3.4:**
+```sql
+-- Retrieving the zones with 'Medium' rent level from the temporary table
+SELECT *
+FROM temp_zone_classifier
+WHERE Rent_Level = 'Medium'
+ORDER BY Total_Units;
+```
+Identifying that **Vancouver zone** has an exceptionally high number of units **(123,867)**, I have opted to use the median instead of the mean to get a clearer picture of the medium rent levels.
+
+#### **Output 3.4:**
+![Result 3 4](https://github.com/user-attachments/assets/13347c92-b573-48f2-9faa-d708d0f13f88)
+
+#### **SQL Query 3.5:**
+```sql
+-- Getting the Median number of units for Medium rent level zones
+SET @rowindex := -1;
+SELECT
+   Rent_Level, FORMAT(AVG(u.Total_Units), 2) as Median 
+FROM
+   (SELECT @rowindex:=@rowindex + 1 AS rowindex,
+           temp_CTE.Total_Units AS Total_Units,
+           temp_CTE.Rent_Level AS Rent_Level
+    FROM temp_CTE
+    WHERE Rent_Level = 'Medium'
+    ORDER BY temp_CTE.Total_Units) AS u
+WHERE 
+u.rowindex IN (FLOOR(@rowindex / 2), CEIL(@rowindex / 2))
+GROUP BY
+Rent_Level;
+```
+
+#### **Output 3.5:**
+![Result 3 5](https://github.com/user-attachments/assets/06020726-721c-4386-a2ea-18768d928e41)
+
+### Interpretation
+The data shows no clear correlation between the number of rental units and rent prices across different zones. Both high-rent and low-rent areas appear to have similar average unit counts, suggesting that the number of available units does not significantly influence rent levels.
