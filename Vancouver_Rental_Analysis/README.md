@@ -51,7 +51,6 @@ ORDER BY Year;
 - Vancouver's rental prices have fluctuated over the past 15 years, with periods of both increases and decreases.
 - After a sharp decline during COVID-19, rent growth surged from **1.78%** to **8.34%** as lockdowns lifted.
 - In 2023, rental prices reached a peak growth rate of **9.13%**.
-- This sharp post-pandemic recovery indicates that the high rents currently experienced in Vancouver are part of a recent trend driven by increased housing demand.
 
 ### <ins> Analysis 2 </ins>
 This analysis delves into the struggles of minimum wage workers in Vancouver when it comes to affording rent. By examining rental prices across various housing types and comparing them to monthly wages, I aim to reveal the percentage of income that these workers must allocate to housing costs. To ensure a relevant understanding of the current landscape, I have concentrated on the last five years of data.
@@ -113,11 +112,11 @@ FROM temp_rent_income;
 ![Result_4](https://github.com/user-attachments/assets/b48e1a46-7a8a-4e1b-8999-cef3a793ec45)
 
 ### Interpretation
-- On average, minimum wage workers in Vancouver spend about **65%** of their income on rent, significantly straining their finances.
+- On average, minimum wage workers in Vancouver spend about **65%** of their income on rent.
 - The situation is only slightly better for median wage workers, who allocate around **35%** of their income to rent.
 - A deeper analysis comparing the monthly earnings of minimum wage workers to various housing types reveals that:
-  - They could never afford a **2-bedroom** rental, as these costs consume **80%** of their monthly earnings.
-  - They could never afford a **3-plus-bedroom** rental, as these costs consume **90%** of their monthly earnings.
+  - **2-bedroom** rental, would consume **80%** of their monthly earnings.
+  - **3-plus-bedroom** rental, would consume **90%** of their monthly earnings.
 
 ### <ins> Analysis 3 </ins>
 This analysis examines whether a greater number of rental units in a zone correlates with lower average rent prices. To conduct this, I have classified zones into low, medium, and high rent categories based on their average rent.
@@ -193,35 +192,30 @@ FROM temp_zone_classifier
 WHERE Rent_Level = 'Medium'
 ORDER BY Total_Units;
 ```
-Identifying that **Vancouver zone** has an exceptionally high number of units **(123,867)**, I have opted to use the median instead of the mean to get a clearer picture of the medium rent levels.
-
 #### **Output 3.4:**
 ![Result 3 4](https://github.com/user-attachments/assets/13347c92-b573-48f2-9faa-d708d0f13f88)
 
+Identifying that **Vancouver zone** has an exceptionally high number of units **(123,867)**, I have opted to remove it as it an outlier and them determine the mean to get a clearer picture of the medium rent levels.
+
 #### **SQL Query 3.5:**
 ```sql
--- Getting the Median number of units for Medium rent level zones
-SET @rowindex := -1;
-SELECT
-   Rent_Level, FORMAT(AVG(u.Total_Units), 2) as Median 
-FROM
-   (SELECT @rowindex:=@rowindex + 1 AS rowindex,
-           temp_CTE.Total_Units AS Total_Units,
-           temp_CTE.Rent_Level AS Rent_Level
-    FROM temp_CTE
-    WHERE Rent_Level = 'Medium'
-    ORDER BY temp_CTE.Total_Units) AS u
-WHERE 
-u.rowindex IN (FLOOR(@rowindex / 2), CEIL(@rowindex / 2))
-GROUP BY
-Rent_Level;
+-- Select rent levels with their count and average total units
+SELECT 
+    Rent_Level, 
+    COUNT(Rent_Level) AS Level_Count,  -- Count of zones in each rent level
+    FORMAT(AVG(Total_Units), 2) AS Avg_Units  -- Average total units in each rent level
+FROM 
+    temp_zone_classifier
+WHERE Total_Units < 10000
+GROUP BY 
+    Rent_Level;  -- Group by rent level to aggregate results
 ```
 
 #### **Output 3.5:**
-![Result 3 5](https://github.com/user-attachments/assets/06020726-721c-4386-a2ea-18768d928e41)
+![Result 3 5](https://github.com/user-attachments/assets/40051db6-2f4b-4a8f-8b9f-33bd64c453ee)
 
 ### Interpretation
-The data shows no clear correlation between the number of rental units and rent prices across different zones. Both high-rent and low-rent areas appear to have similar average unit counts, suggesting that the number of available units does not significantly influence rent levels.
+- Despite the higher availability of rental units in medium rent zones, the presence of more units does not translate to lower prices.
 
 ### <ins> Analysis 4 </ins>
 This analysis aims to determine whether renting a larger home in Vancouver is significantly more expensive compared to smaller units, or if all housing types are generally hard to afford. I focus on the rent as a percentage of median wages in 2023 to assess affordability across different bedroom types.
@@ -249,7 +243,8 @@ WHERE
 ![Result 4 1](https://github.com/user-attachments/assets/31adf246-d1b5-40fd-82cc-45480731c93d)
 
 ### Interpretation
-The rent for a bachelor unit is 31% of the median income, which is already significant. This percentage rises to 51% for 3-plus bedroom units, clearly illustrating that rent is a financial burden across all housing types. However, the larger the home, the more challenging it becomes to manage rent payments.
+- The rent for a **bachelor unit** is **31%** of the median income, which is already significant. 
+- This percentage rises to **51%** for **3-plus bedroom** units.
 
 ### <ins> Analysis 5 </ins>
 This analysis focuses on identifying the zone in Vancouver that has the lowest average rent, providing insight into the most affordable area for renters.
@@ -271,6 +266,21 @@ LIMIT 1;  -- Limit the result to the zone with the lowest rent
 ![Result 5 1](https://github.com/user-attachments/assets/88310cfa-cf08-4cfc-bf2b-43df804d6f70)
 
 ### Interpretation
-- The Marpole zone offers the lowest average rent at $1,396.
-- This makes Marpole the most affordable zone in Vancouver, providing a more budget-friendly
-  option compared to higher-rent areas.
+- The three zones that offer lowest average rent are **Marpole**, **White Rock** and **Southeast Burnaby**.
+
+## Final Results
+**1. Have rental prices in Vancouver consistently been high, or is this a recent trend?**
+The high rents currently experienced in Vancouver are part of a recent trend driven by increased housing demand and post-pandemic recovery.
+
+**2. How challenging is it for a minimum wage worker to manage rent payments?**
+- Minimum wage workers spend a significant portion of their income on rent, placing a considerable strain on their finances.
+- For a family with one earner, affording a 2-bedroom or 3-plus-bedroom rental is nearly impossible, as these costs consume around 85% of their monthly earnings.
+
+**3. Does having a greater number of rental units in a zone lead to lower prices?**
+The analysis indicates that no clear correlation exists between the number of rental units and rent prices across different zones. While increased supply typically leads to lower rents, this relationship appears more complex in Vancouver. Factors such as high demand, economic conditions, and housing policies may counteract the expected supply-demand dynamics.
+
+**4. Is renting a larger home significantly more expensive, or are all housing options hard to afford?**
+Rent constitutes a financial burden across all housing types. However, the larger the home, the more challenging it becomes to manage rent payments effectively.
+
+**5. Which zone would be the best choice if I want to minimize my rent?**
+The Marpole zone offers the lowest average rent at $1,396, making it a more affordable option for renters in Vancouver.
