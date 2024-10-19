@@ -269,18 +269,18 @@ LIMIT 1;  -- Limit the result to the zone with the lowest rent
 - The three zones that offer lowest average rent are **Marpole**, **White Rock** and **Southeast Burnaby**.
 
 ## Final Results
-**1. Have rental prices in Vancouver consistently been high, or is this a recent trend?**
+**1. Have rental prices in Vancouver consistently been high, or is this a recent trend?**\
 The high rents currently experienced in Vancouver are part of a recent trend driven by increased housing demand and post-pandemic recovery.
 
 **2. How challenging is it for a minimum wage worker to manage rent payments?**
 - Minimum wage workers spend a significant portion of their income on rent, placing a considerable strain on their finances.
 - For a family with one earner, affording a 2-bedroom or 3-plus-bedroom rental is nearly impossible, as these costs consume around 85% of their monthly earnings.
 
-**3. Does having a greater number of rental units in a zone lead to lower prices?**
+**3. Does having a greater number of rental units in a zone lead to lower prices?**\
 The analysis indicates that no clear correlation exists between the number of rental units and rent prices across different zones. While increased supply typically leads to lower rents, this relationship appears more complex in Vancouver. Factors such as high demand, economic conditions, and housing policies may counteract the expected supply-demand dynamics.
 
-**4. Is renting a larger home significantly more expensive, or are all housing options hard to afford?**
+**4. Is renting a larger home significantly more expensive, or are all housing options hard to afford?**\
 Rent constitutes a financial burden across all housing types. However, the larger the home, the more challenging it becomes to manage rent payments effectively.
 
-**5. Which zone would be the best choice if I want to minimize my rent?**
+**5. Which zone would be the best choice if I want to minimize my rent?**\
 The Marpole zone offers the lowest average rent at $1,396, making it a more affordable option for renters in Vancouver.
