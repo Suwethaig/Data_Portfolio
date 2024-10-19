@@ -1,3 +1,10 @@
+SELECT *
+FROM combined_wage_data;
+
+
+
+
+
 -- Viewing the first 5 rows of each dataset
 SELECT *
 FROM projects.dc_data_1

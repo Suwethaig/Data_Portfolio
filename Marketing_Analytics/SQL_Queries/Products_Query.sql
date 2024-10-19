@@ -1,5 +1,5 @@
--- Retrieving all data from the products table
-SELECT * 
+-- Retrieve the first 10 records from the products table to get an understanding of its structure
+SELECT TOP 10 * 
 FROM dbo.products;
 
 -- Observation: No NULL/Missing values, 'Category' column is redundant and will be excluded

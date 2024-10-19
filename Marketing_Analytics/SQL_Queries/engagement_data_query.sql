@@ -1,5 +1,5 @@
--- Retrieve all data from the engagement_data table
-SELECT *
+-- Retrieve the first 10 records from the engagement_data table to get an understanding of its structure
+SELECT TOP 10*
 FROM dbo.engagement_data;
 
 -- Observations:

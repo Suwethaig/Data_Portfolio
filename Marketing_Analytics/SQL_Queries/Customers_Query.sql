@@ -1,5 +1,5 @@
--- Retrieve all data from the customers table
-SELECT *
+-- Retrieve the first 10 records from the customers table to get an understanding of its structure
+SELECT TOP 10*
 FROM dbo.customers;
 
 -- Observations:
