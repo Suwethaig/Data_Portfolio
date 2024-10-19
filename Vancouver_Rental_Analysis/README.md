@@ -3,7 +3,7 @@
 
 ### ***You vs. Vancouver rental prices***
 
-As an newcomer to Vancouver, one of the first things I noticed was how much of my income goes toward rent compared to back home. It was surprising to realize that renting in Vancouver demands a significant portion of my earnings, something I wasn't accustomed to. This observation led me to wonder: ***Is this a recent phenomenon, or have Vancouver residents always faced such high rents?*** 
+As a newcomer to Vancouver, one of the first things I noticed was how much of my income goes toward rent compared to back home. It was surprising to realize that renting in Vancouver demands a significant portion of my earnings, something I wasn't accustomed to. This observation led me to wonder: ***Is this a recent phenomenon, or have Vancouver residents always faced such high rents?*** 
 
 Rather than just speculate, I decided to dive into the data and discover the truth for myself!
 
