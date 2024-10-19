@@ -222,3 +222,55 @@ Rent_Level;
 
 ### Interpretation
 The data shows no clear correlation between the number of rental units and rent prices across different zones. Both high-rent and low-rent areas appear to have similar average unit counts, suggesting that the number of available units does not significantly influence rent levels.
+
+### <ins> Analysis 4 </ins>
+This analysis aims to determine whether renting a larger home in Vancouver is significantly more expensive compared to smaller units, or if all housing types are generally hard to afford. I focus on the rent as a percentage of median wages in 2023 to assess affordability across different bedroom types.
+
+#### **SQL Query 4.1:**
+```sql
+-- Retrieve rent percentages for different bedroom types as a percentage of median wage for the year 2023
+SELECT 
+    cwd.Year, 
+    FORMAT(har.Bachelor / (cwd.Median_Wage * 160) * 100, 2) AS Bach_Rent_Percent,  -- Percentage of median wage spent on Bachelor rent
+    FORMAT(har.1_Bedroom / (cwd.Median_Wage * 160) * 100, 2) AS 1B_Rent_Percent,    -- Percentage of median wage spent on 1 Bedroom rent
+    FORMAT(har.2_Bedroom / (cwd.Median_Wage * 160) * 100, 2) AS 2B_Rent_Percent,    -- Percentage of median wage spent on 2 Bedroom rent
+    FORMAT(har.3_Plus_Bedroom / (cwd.Median_Wage * 160) * 100, 2) AS 3P_Rent_Percent  -- Percentage of median wage spent on 3+ Bedroom rent
+FROM 
+    his_ave_rent har
+JOIN 
+    combined_wage_data cwd
+ON 
+    har.Year = cwd.Year
+WHERE 
+    cwd.Year = 2023;  -- Filter data for the year 2023;
+```
+
+#### **Output 4.1:**
+![Result 4 1](https://github.com/user-attachments/assets/31adf246-d1b5-40fd-82cc-45480731c93d)
+
+### Interpretation
+The rent for a bachelor unit is 31% of the median income, which is already significant. This percentage rises to 51% for 3-plus bedroom units, clearly illustrating that rent is a financial burden across all housing types. However, the larger the home, the more challenging it becomes to manage rent payments.
+
+### <ins> Analysis 5 </ins>
+This analysis focuses on identifying the zone in Vancouver that has the lowest average rent, providing insight into the most affordable area for renters.
+
+#### **SQL Query 5.1:**
+```sql
+-- Retrieve the zone with the lowest average rent
+SELECT 
+    Zone, 
+    Total_Avg_Rent
+FROM 
+    zone_avg_rent
+ORDER BY 
+    Total_Avg_Rent ASC  -- Order by rent in ascending order
+LIMIT 1;  -- Limit the result to the zone with the lowest rent
+```
+
+#### **Output 5.1:**
+![Result 5 1](https://github.com/user-attachments/assets/88310cfa-cf08-4cfc-bf2b-43df804d6f70)
+
+### Interpretation
+- The Marpole zone offers the lowest average rent at $1,396.
+- This makes Marpole the most affordable zone in Vancouver, providing a more budget-friendly
+  option compared to higher-rent areas.
