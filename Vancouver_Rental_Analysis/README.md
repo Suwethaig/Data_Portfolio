@@ -335,3 +335,15 @@ The following data modifications were performed in Excel:
           - Formatted the `Year` column to display only the year.
           - Updated the wage data to fill in missing values for consecutive years. For instance, if the minimum wage was $5 in 1990 and increased to $5.50 in 1992, the wage for 1991 was set at $5, reflecting the situation in that year.
 
+## Setup Instructions
+
+- Set up the database by importing the necessary datasets into your SQL database: `his_units`, `his_ave_rent`, `zone_units`, `zone_avg_rent`, and `combined_wage_data`.
+- Run the analysis by executing the provided SQL queries on the rental data.
+- Finally, view the results of the analysis in your SQL database or through any generated output files.
+
+## Guide to Folders
+
+- **Dataset**: This folder contains both the original unedited datasets obtained from the source and the edited datasets that have been modified for analysis purposes.
+- **Output**: This folder holds all output images generated from the analysis, providing visual representations of the data findings.
+- **SQL Files**: This folder includes all SQL queries used throughout the project for data analysis, ensuring easy access to the code behind the results.
+
