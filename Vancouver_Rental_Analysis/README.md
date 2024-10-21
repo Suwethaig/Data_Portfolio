@@ -13,11 +13,11 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 - [Key Questions for Exploration](key-questions-for-exploration)
 - [Hypotheses](hypotheses)
 - [Data Analysis](data-analysis)
-  - [Analysis 1](analysis-1)
-  - [Analysis 2](analysis-2)
-  - [Analysis 3](analysis-3)
-  - [Analysis 4](analysis-4)
-  - [Analysis 5](analysis-5)
+  - [Analysis 1 - Rental Price Evolution](analysis-1--rental-price-evolution)
+  - [Analysis 2 - Minimum Wage Challenges](analysis-2--minimum-wage-challenges)
+  - [Analysis 3 - Supply and Price Dynamics](analysis-3)
+  - [Analysis 4 - Housing Option Trends](analysis-4)
+  - [Analysis 5 - Affordable Zones](analysis-5)
 - [Final Results](final-results)
 - [Data Overview](data-overview)
   - [Data Sources](data-sources)
@@ -41,7 +41,7 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 
 ## Data Analysis
 
-### <ins> Analysis 1 </ins>
+### <ins> Analysis 1 - Rental Price Evolution </ins>
 This analysis focuses on determining whether high rental prices in Vancouver are a recent occurrence or if they have been high over the past 15 years. I have calculated annual rent change and percentage growth to identify significant increases in rent.
 
 #### **SQL Query 1.1:**
@@ -66,7 +66,7 @@ ORDER BY Year;
 - After a sharp decline during COVID-19, rent growth surged from **1.78%** to **8.34%** as lockdowns lifted.
 - In 2023, rental prices reached a peak growth rate of **9.13%**.
 
-### <ins> Analysis 2 </ins>
+### <ins> Analysis 2 - Minimum Wage Challenges </ins>
 This analysis delves into the struggles of minimum wage workers in Vancouver when it comes to affording rent. By comparing rental prices to monthly wages, I aim to reveal the percentage of income that these workers must allocate to housing costs. To ensure a relevant understanding of the current landscape, I have concentrated on the last five years of data.
 
 #### **SQL Query 2.1:**
@@ -134,7 +134,7 @@ FROM temp_rent_income;
   - **2-bedroom** rental, would consume **80%** of their monthly earnings.
   - **3-plus-bedroom** rental, would consume **90%** of their monthly earnings.
 
-### <ins> Analysis 3 </ins>
+### <ins> Analysis 3 - Supply and Price Dynamics </ins>
 This analysis examines whether a greater number of rental units in a zone correlates with lower average rent prices. To conduct this, I have classified zones into low, medium, and high rent categories based on their average rent.
 
 #### **SQL Query 3.1:**
@@ -233,7 +233,7 @@ GROUP BY
 ### Interpretation
 - Despite the higher availability of rental units in medium rent zones, the presence of more units does not translate to lower prices.
 
-### <ins> Analysis 4 </ins>
+### <ins> Analysis 4 - Housing Option Trends </ins>
 This analysis aims to determine whether renting a larger home in Vancouver is significantly more expensive compared to smaller units, or if all housing types are generally hard to afford. 
 
 #### **SQL Query 4.1:**
@@ -262,7 +262,7 @@ WHERE
 - The rent for a **bachelor unit** is **31%** of the median income, which is already significant. 
 - This percentage rises to **51%** for **3-plus bedroom** units.
 
-### <ins> Analysis 5 </ins>
+### <ins> Analysis 5 - Affordable Zones </ins>
 This analysis focuses on identifying the zone in Vancouver that has the lowest average rent, providing insight into the most affordable area for renters.
 
 #### **SQL Query 5.1:**
