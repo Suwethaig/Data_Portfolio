@@ -22,8 +22,8 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 - [Data Overview](data-overview)
   - [Data Sources](data-sources)
   - [Data Modifications](data-modifications)
-- [Setup Instructions](setup-instructions)
-- [Guide to Folders](guide-to-folders)
+- [Setup Instructions](#setup-instructions)
+- [Guide to Folders](#guide-to-folders)
 
 ## Key Questions for Exploration
 ***This section outlines the primary questions driving this analysis of Vancouver's rental market***
