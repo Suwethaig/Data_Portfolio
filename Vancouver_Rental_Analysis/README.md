@@ -3,7 +3,7 @@
 
 ### ***You vs. Vancouver rental prices***
 
-As a newcomer to Vancouver, one of the first things I noticed was how much of my income goes toward rent! It was surprising to realize that renting in Vancouver demands a significant portion of my earnings, something I wasn't accustomed to. This observation led me to wonder: ***Is this a recent phenomenon, or have Vancouver residents always faced such high rents?*** 
+As a newcomer to Vancouver, one of the first things I noticed was how much of my income goes toward rent! It was surprising to realize that renting in Vancouver demands a significant portion of my earnings, something I wasn't accustomed to. This observation led me to wonder: ***Is this a recent phenomenon, or have Vancouverites always faced such high rents?*** 
 
 Rather than just speculate, I decided to dive into the data and discover the truth for myself.
 
@@ -28,7 +28,7 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 ## Data Analysis
 
 ### <ins> Analysis 1 </ins>
-This analysis focuses on determining whether high rental prices in Vancouver are a recent occurrence or if they have been high over the past 15 years. By examining the annual rent change and percentage growth from 2009 to the present, we can identify significant increases in rent.
+This analysis focuses on determining whether high rental prices in Vancouver are a recent occurrence or if they have been high over the past 15 years. I have calculated annual rent change and percentage growth to identify significant increases in rent.
 
 #### **SQL Query 1.1:**
 ```sql
@@ -53,7 +53,7 @@ ORDER BY Year;
 - In 2023, rental prices reached a peak growth rate of **9.13%**.
 
 ### <ins> Analysis 2 </ins>
-This analysis delves into the struggles of minimum wage workers in Vancouver when it comes to affording rent. By examining rental prices across various housing types and comparing them to monthly wages, I aim to reveal the percentage of income that these workers must allocate to housing costs. To ensure a relevant understanding of the current landscape, I have concentrated on the last five years of data.
+This analysis delves into the struggles of minimum wage workers in Vancouver when it comes to affording rent. By comparing rental prices to monthly wages, I aim to reveal the percentage of income that these workers must allocate to housing costs. To ensure a relevant understanding of the current landscape, I have concentrated on the last five years of data.
 
 #### **SQL Query 2.1:**
 ```sql
@@ -78,6 +78,8 @@ WHERE combined_wage_data.Year > 2018;
 SELECT * 
 FROM temp_rent_income;
 ```
+
+Next, I have calculated rent to income ratio for total average rent and average rent across different housing types.
 
 #### **Output 2.1:**
 ![Result_2](https://github.com/user-attachments/assets/e85db987-4742-4407-82b0-c998a207f219)
@@ -218,7 +220,7 @@ GROUP BY
 - Despite the higher availability of rental units in medium rent zones, the presence of more units does not translate to lower prices.
 
 ### <ins> Analysis 4 </ins>
-This analysis aims to determine whether renting a larger home in Vancouver is significantly more expensive compared to smaller units, or if all housing types are generally hard to afford. I focus on the rent as a percentage of median wages in 2023 to assess affordability across different bedroom types.
+This analysis aims to determine whether renting a larger home in Vancouver is significantly more expensive compared to smaller units, or if all housing types are generally hard to afford. 
 
 #### **SQL Query 4.1:**
 ```sql
