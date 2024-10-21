@@ -284,3 +284,8 @@ Rent constitutes a financial burden across all housing types. However, the large
 
 **5. Which zone would be the best choice if I want to minimize my rent?**\
 The Marpole zone offers the lowest average rent at $1,396, making it a more affordable option for renters in Vancouver.
+
+## Data Sources
+1. **Vancouver Rental Data** - Canadian Mortagage and Housing Corporation [(Link)](https://www03.cmhc-schl.gc.ca/hmip-pimh/en/TableMapChart/Table?TableId=2.1.31.3&GeographyId=2410&GeographyTypeId=3&DisplayAs=Table&GeograghyName=Vancouver)
+2. **Median Hourly Wage Data** - Statistics Canada [(Link)](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410006401&pickMembers%5B0%5D=1.11&pickMembers%5B1%5D=2.2&pickMembers%5B2%5D=3.1&pickMembers%5B3%5D=5.1&pickMembers%5B4%5D=6.1&cubeTimeFrame.startYear=2019&cubeTimeFrame.endYear=2023&referencePeriods=20190101%2C20230101)
+3. **Minimum Hourly Wage Data** - Government of Canada [(Link)](https://open.canada.ca/data/en/dataset/390ee890-59bb-4f34-a37c-9732781ef8a0/resource/2ddfbfd4-8347-467d-b6d5-797c5421f4fb  )
