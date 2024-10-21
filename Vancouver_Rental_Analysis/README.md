@@ -13,7 +13,7 @@ Rather than just speculate, I decided to dive into the data and discover the tru
 - [Key Questions for Exploration](key-questions-for-exploration)
 - [Hypotheses](hypotheses)
 - [Data Analysis](data-analysis)
-  - [Analysis 1 - Rental Price Evolution](analysis-1-rental-price-evolution)
+  - [Analysis 1 - Rental Price Evolution](analysis---1-rental-price-evolution)
   - [Analysis 2 - Minimum Wage Challenges](analysis-2--minimum-wage-challenges)
   - [Analysis 3 - Supply and Price Dynamics](analysis-3)
   - [Analysis 4 - Housing Option Trends](analysis-4)
