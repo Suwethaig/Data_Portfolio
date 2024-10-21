@@ -285,7 +285,37 @@ Rent constitutes a financial burden across all housing types. However, the large
 **5. Which zone would be the best choice if I want to minimize my rent?**\
 The Marpole zone offers the lowest average rent at $1,396, making it a more affordable option for renters in Vancouver.
 
-## Data Sources
+## Data Overview
+
+### Data Sources
 1. **Vancouver Rental Data** - Canadian Mortagage and Housing Corporation [(Link)](https://www03.cmhc-schl.gc.ca/hmip-pimh/en/TableMapChart/Table?TableId=2.1.31.3&GeographyId=2410&GeographyTypeId=3&DisplayAs=Table&GeograghyName=Vancouver)
 2. **Median Hourly Wage Data** - Statistics Canada [(Link)](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410006401&pickMembers%5B0%5D=1.11&pickMembers%5B1%5D=2.2&pickMembers%5B2%5D=3.1&pickMembers%5B3%5D=5.1&pickMembers%5B4%5D=6.1&cubeTimeFrame.startYear=2019&cubeTimeFrame.endYear=2023&referencePeriods=20190101%2C20230101)
 3. **Minimum Hourly Wage Data** - Government of Canada [(Link)](https://open.canada.ca/data/en/dataset/390ee890-59bb-4f34-a37c-9732781ef8a0/resource/2ddfbfd4-8347-467d-b6d5-797c5421f4fb  )
+
+### Data Modifications
+The following data modifications were performed in Excel:
+
+#### 1. **Historical Rent Data** 
+   - **Files**: `his_units`, `his_ave_rent`
+   - **Modifications**:
+     - Removed columns and rows that were not relevant to the analysis.
+     - Formatted the `Year` column to display only the year, simplifying the data for time-series analysis.
+
+#### 2. **Zone Data**
+   - **Files**: `zone_units`, `zone_avg_rent`
+   - **Modifications**:
+     - Removed unnecessary columns and rows to streamline the dataset.
+     - Replaced empty cells (originally marked as `**`) with `n/a` for clarity and consistency.
+
+#### 3. **Combined Wage Data**
+   - **File**: `combined_wage_data`
+   - **Modifications**:
+     - This file was created by merging two datasets:
+       1. **Median Wage Data**: 
+          - Removed unused columns and rows.
+          - Pivoted the table to achieve the required format for analysis.
+       2. **Historical Minimum Salary**: 
+          - Filtered the dataset to only include British Columbia (BC) data.
+          - Formatted the `Year` column to display only the year.
+          - Updated the wage data to fill in missing values for consecutive years. For instance, if the minimum wage was $5 in 1990 and increased to $5.50 in 1992, the wage for 1991 was set at $5, reflecting the situation in that year.
+
