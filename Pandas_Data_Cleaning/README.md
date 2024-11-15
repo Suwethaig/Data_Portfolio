@@ -27,10 +27,14 @@ In this project, I worked with a customer call list dataset to identify and reso
 ![Clean Data](https://github.com/user-attachments/assets/c2e6345d-4016-4294-9b8c-5dade22fa6d1)
 
 ### Guide to Files:
-- **input_file**: This folder contains the raw data file.
-  - **customer_call_list.xlsx**: The input file containing the original customer call list data, which needs cleaning.
-- **customer_call_data_cleaning.ipynb**: This Jupyter notebook contains the Python script used to clean and standardize the customer call list dataset.
-- **contactable_customer_list.xlsx**: The output file generated after the data cleaning process, containing a refined list of contactable customers.
+
+| File/Folder                          | Description                                                                 |
+|--------------------------------------|-----------------------------------------------------------------------------|
+| **input_file**                       | Folder containing the raw data file.                                         |
+| **customer_call_list.xlsx**          | Input file with the original customer call list data that needs cleaning.    |
+| **customer_call_data_cleaning.ipynb**| Jupyter notebook containing the Python script used to clean the data.        |
+| **contactable_customer_list.xlsx**   | Output file generated after cleaning, containing the list of contactable customers. |
+
 
 ### Setup Instructions:
 
